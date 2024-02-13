@@ -80,7 +80,7 @@ const add5 = add3(5);
 
 //? Explicit binding
 
-globalThis.name = "Superman";
+globalThis.name = 'Superman';
 
 function sayMyName() {
   console.log(`My name is ${this.name}`);
@@ -143,11 +143,11 @@ class Person {
   }
 
   sayMyName() {
-    return this.firstName + " " + this.lastName;
+    return this.firstName + ' ' + this.lastName;
   }
 }
 
-const person1 = new Person("Sara", "Connor");
+const person1 = new Person('Sara', 'Connor');
 // console.log(person1.sayMyName());
 
 class SuperHero extends Person {
@@ -157,11 +157,11 @@ class SuperHero extends Person {
   }
 
   fightCrime() {
-    console.log("Fighting crime");
+    console.log('Fighting crime');
   }
 }
 
-const batman = new SuperHero("Sara", "Nova");
+const batman = new SuperHero('Sara', 'Nova');
 // console.log(batman.sayMyName());
 
 //! Iterables and Iterators
@@ -173,9 +173,9 @@ const obj = {
       next: function () {
         step++;
         if (step === 1) {
-          return { value: "Hello", done: false };
+          return { value: 'Hello', done: false };
         } else if (step === 2) {
-          return { value: "World", done: false };
+          return { value: 'World', done: false };
         }
         return { value: undefined, done: true };
       },
@@ -192,18 +192,39 @@ const obj = {
 //!Generators
 
 function normalFunction() {
-  console.log("Hello");
-  console.log("World");
+  console.log('Hello');
+  console.log('World');
 }
 
 // normalFunction();
 
 function* generatorFunction() {
-  yield "Hello";
-  yield "World";
+  yield 'Hello';
+  yield 'World';
 }
 
-const generatorObj = generatorFunction();
-for (const word of generatorObj) {
-  console.log(word);
-}
+// const generatorObj = generatorFunction();
+// for (const word of generatorObj) {
+//   console.log(word);
+// }
+
+//! Object groupBy
+
+const people = [
+  { name: 'Kyle', age: 28 },
+  { name: 'Sally', age: 28 },
+];
+
+// Object.groupBy(people, (person) => {
+//   return person.age;
+// });
+
+//!withResolvers
+
+const promise2 = new Promise((resolve, reject) => {
+  resolve();
+  reject();
+});
+
+const { promise, resolve, reject } = Promise.withResolvers();
+reject();
